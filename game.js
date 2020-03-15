@@ -1,9 +1,9 @@
 		
-		var canWidth = 1000;
+		var canWidth =1000;
 		var canHeight = 500;
 		//position where frame will be drawn
-		var x = 20; 
-		var y = 20;
+		var x = 0;
+		var y =290;
 		const scale =3;
 		
 		var trackLeft = 1;
@@ -26,7 +26,7 @@
 		var left = false;
 
 		var character = new Image;
-		character.src = "photos/dodo1.png";
+		character.src = "dodo1.png";
 
 		var canvas = document.getElementById('canvas');
 		canvas.width = canWidth;
