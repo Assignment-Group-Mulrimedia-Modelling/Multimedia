@@ -1,0 +1,23 @@
+body{ 
+	margin-right: 0px; 
+	background: black; 
+}
+
+div#background{
+	width: 1000px;
+	height: 500px;
+	margin: 4% auto;
+	background: url(horizontal6.png) repeat;
+	animation: animate-background linear 12s infinite;
+}
+
+@keyframes animate-background {
+	from { 
+		background-position: 0px 0px; 
+	} 
+	to { 
+		background-position:  -1000px 0px; 
+	}
+
+
+}
