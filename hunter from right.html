@@ -5,15 +5,16 @@
 	<link rel="stylesheet" type="text/css" href="background.css">
 </head>
 <body>
+	<div id="background">
 	<canvas id = 'canvas'>		
 	</canvas>
 
 	<script>
-		var canWidth = 2000;
-		var canHeight = 1000;
+		var canWidth = 1000;
+		var canHeight = 500;
 		//position where frame will be drawn
 		var x = 1200; 
-		var y = 20;
+		var y = 0;
 		const scale = 0.9;
 		
 		var trackRight = 0;
@@ -46,7 +47,7 @@
 
 		function updateFrame(){
 
-			for(Y = y; Y < canHeight; Y+=110){
+			for(Y = y; Y < canHeight; Y+=100){
 				ctx.clearRect(x,Y, width*scale, height*scale);
 			}
 			
@@ -70,7 +71,7 @@
 		function drawImage(){
 			updateFrame();
 
-			for(Y = y; Y<canHeight; Y+=110){
+			for(Y = y; Y < canHeight; Y+=100){
 			ctx.drawImage(character,srcX,srcY,width,height,x,Y,width*scale,height*scale);
 			}
 
