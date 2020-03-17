@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hunter</title>
+	<link rel="stylesheet" type="text/css" href="background.css">
+</head>
+<body>
+	<canvas id = 'canvas'>		
+	</canvas>
+
+	<script>
+		var canWidth = 2000;
+		var canHeight = 1000;
+		//position where frame will be drawn
+		var x = 0; 
+		var y = 20;
+		var scale = 0.9;
+
+		var X,Y;
+		
+	
+		var trackLeft = 0;
+
+		var scrX;
+		var srcY;
+
+		var sheetWidth = 1019;
+		var sheetHeight = 123;
+
+		var cols = 9;
+		var rows = 1;
+
+		var width = sheetWidth / cols;
+		var height = sheetHeight / rows;
+
+		var sp = Math.floor((Math.random() * 50) + 30);
+		console.log(sp);
+
+		var currentFrame = 0;
+		var left = false;
+
+		var character = new Image;
+		character.src = "hunter-right.png";
+
+		var canvas = document.getElementById('canvas');
+		canvas.width = canWidth;
+		canvas.height = canHeight;
+
+		var ctx = canvas.getContext('2d');
+		
+
+
+		function updateFrame(){
+
+
+			for(Y = y; Y<canHeight; Y+=110){
+					ctx.clearRect(x,Y, width*scale, height*scale);
+			}	
+
+
+		/*	
+			ctx.clearRect(x,y+150, width*(scale+0.1), height*(scale+0.1));
+			ctx.clearRect(x,y+300, width*(scale+0.3), height*(scale+0.2));
+			ctx.clearRect(x,y+450, width*(scale+0.5), height*(scale+0.3));
+		*/	
+
+			currentFrame = currentFrame % cols; //1 % 3 = 1 ... 3 % 3 = 0
+
+			srcX = currentFrame * width;
+
+			x=x+5;
+			srcY = trackLeft * height;
+
+			if(x> canWidth){
+				x = 0;
+			}
+		
+			currentFrame++;	
+		}
+
+
+
+
+		function drawImage(){
+			updateFrame();
+
+
+
+			for(Y = y; Y<canHeight; Y+=110){
+				ctx.drawImage(character,srcX,srcY,width,height,x,Y,width*scale,height*scale);
+			}
+				
+			
+			
+		
+
+		/*
+			ctx.drawImage(character,srcX,srcY,width,height,x,y+150,width*(scale+0.1),height*(scale+0.1));
+
+			ctx.drawImage(character,srcX,srcY,width,height,x,y+300,width*(scale+0.3),height*(scale+0.2));
+
+			ctx.drawImage(character,srcX,srcY,width,height,x,y+450,width*(scale+0.5),height*(scale+0.3));
+		*/	
+		
+		}
+
+		setInterval(function(){
+
+			drawImage();
+
+		}, 30);
+
+
+	
+
+	</script>
+
+</body>
+</html>
