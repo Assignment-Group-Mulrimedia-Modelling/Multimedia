@@ -7,7 +7,7 @@ div#background{
 	width: 1000px;
 	height: 500px;
 	margin: 4% auto;
-	background: url(horizontal6.png) repeat;
+	background: url(forest.png) repeat;
 	animation: animate-background linear 12s infinite;
 }
 
@@ -16,7 +16,7 @@ div#background{
 		background-position: 0px 0px; 
 	} 
 	to { 
-		background-position:  -1000px 0px; 
+		background-position:  0px 0px; 
 	}
 
 
