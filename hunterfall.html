@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML Canvas Animation</title>
+	</head>
+<body>
+	<canvas id='canvas'></canvas>
+
+	<button onclick='moveLeft()'>Left</button>
+	<button onclick='moveRight()'>Right</button>
+	<script>
+		var canWidth = 1200;
+		var canHeight = 735;
+
+		//the position where the frame will be drawn
+		var x = 0;
+		var y = 0;
+
+		var left = false;
+
+		var trackLeft = 4;
+		var trackRight = 0;
+
+		var srcX;
+		var srcY;
+
+		var cols = 1200;
+		var rows = 735;
+
+		var framecount = 9;
+
+		var width = sheetWidth / cols;
+		var height = sheetHeight / rows;
+
+		var currentFrame = 0;
+		var character = new Image();
+		character.src = "hunterfall.png";
+
+		var canvas = document.getElementById('canvas');
+		canvas.width = canWidth;
+		canvas.height = canHeight;
+
+		var ctx = canvas.getContext('2d');
+
+		function moveRight(){
+
+			left = false;
+		}
+		function moveLeft(){
+			left = true;
+		}
+
+
+
+		function updateFrame(){
+			ctx.clearRect(x, y, width, height);
+            currentFrame = ++currentFrame % cols; // 2 % 9 = 2
+
+            srcX = currentFrame * width;
+            if(left)
+            srcY = trackLeft * height;
+        else{
+            x+=5;
+        	srcY = trackRight * height;
+	        }
+            
+
+
+		}
+
+		function drawImage(){
+			updateFrame();
+			ctx.drawImage(character, srcX, srcY, width, height, x, y, width, height);
+		}
+
+		setInterval(function(){
+			drawImage();
+		}, 100 );
+	</script>
+	</body>
+</html>
