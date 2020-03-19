@@ -3,7 +3,7 @@
 		var canHeight = 500;
 		//position where frame will be drawn
 		var x = 0;
-		var y =150;
+		var y =200;
 		const scale =3;
 		
 		var trackLeft = 1;
