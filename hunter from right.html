@@ -14,8 +14,8 @@
 		var canHeight = 600;
 		//position where frame will be drawn
 		var x = 1300; 
-		var y = 200;
-		const scale = 0.9;
+		var y = 180;
+		const scale = 0.7;
 		
 		var trackRight = 0;
 		
@@ -32,6 +32,26 @@
 		var width = sheetWidth / cols;
 		var height = sheetHeight / rows;
 
+		var x1 = Math.floor((Math.random() * 1400) + 1300);
+		var x2 = Math.floor((Math.random() * 1400) + 1300);
+		var x3 = Math.floor((Math.random() * 1400) + 1300);
+		var x4 = Math.floor((Math.random() * 1400) + 1300);
+		console.log(x1);
+		console.log(x2);
+		console.log(x3);
+		console.log(x4);
+
+		console.log("next")
+
+		var xx1 = Math.floor((Math.random() * 8) + 4);
+		var xx2 = Math.floor((Math.random() * 8) + 4);
+		var xx3 = Math.floor((Math.random() * 8) + 4);
+		var xx4 = Math.floor((Math.random() * 8) + 4);
+		console.log(xx1);
+		console.log(xx2);
+		console.log(xx3);
+		console.log(xx4);		
+
 		var currentFrame = 0;
 		var left = false;
 
@@ -47,20 +67,45 @@
 
 		function updateFrame(){
 
-			for(Y = y; Y < canHeight; Y+=100){
-				ctx.clearRect(x,Y, width*scale, height*scale);
-			}
+			//for(Y = y; Y < canHeight; Y+=100){
+				ctx.clearRect(x,y, width*scale, height*scale);
+				ctx.clearRect(x1,y+50, width*(scale+0.1),height*(scale+0.1));
+				ctx.clearRect(x2,y+100, width*(scale+0.15),height*(scale+0.15));
+				ctx.clearRect(x3,y+200, width*(scale+0.2),height*(scale+0.2));
+				ctx.clearRect(x4,y+300, width*(scale+0.3),height*(scale+0.3));				
+			//}
 			
 			currentFrame = currentFrame % cols; //1 % 3 = 1 ... 3 % 3 = 0
 
 			srcX = currentFrame * width;
 			x-=5;
+			x1-=xx1;
+			x2-=xx2;
+			x3-=xx3;
+			x4-=xx4;			
 			srcY = trackRight * height;
 		
 
-			if(x<0){
+			if(x < -10){
 				x = canWidth;
 			}
+
+			if(x1 < -10){
+				x1 = canWidth;
+			}
+
+			if(x2 < -10){
+				x2 = canWidth;
+			}
+
+			if(x3 < -10){
+				x3 = canWidth;
+			}	
+
+			if(x4 < -10){
+				x4 = canWidth;
+			}								
+		
 			
 
 			currentFrame++;
@@ -71,16 +116,20 @@
 		function drawImage(){
 			updateFrame();
 
-			for(Y = y; Y < canHeight; Y+=100){
-			ctx.drawImage(character,srcX,srcY,width,height,x,Y,width*scale,height*scale);
-			}
+			//for(Y = y; Y < canHeight; Y+=100){
+			ctx.drawImage(character,srcX,srcY,width,height,x,y,width*scale,height*scale);
+			ctx.drawImage(character,srcX,srcY,width,height,x1,y+50,width*(scale+0.1),height*(scale+0.1));
+			ctx.drawImage(character,srcX,srcY,width,height,x2,y+100,width*(scale+0.15),height*(scale+0.15));
+			ctx.drawImage(character,srcX,srcY,width,height,x3,y+200,width*(scale+0.2),height*(scale+0.2));
+			ctx.drawImage(character,srcX,srcY,width,height,x4,y+300,width*(scale+0.3),height*(scale+0.3));			
+			//}
 
 		} 		
 
 		setInterval(function(){
 			drawImage();
 
-		}, 30 );
+		}, 45 );
 
 
 	
