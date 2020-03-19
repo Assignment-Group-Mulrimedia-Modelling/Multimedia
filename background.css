@@ -4,8 +4,8 @@ body{
 }
 
 div#background{
-	width: 1000px;
-	height: 500px;
+	width: 700px;
+	height: 400px;
 	margin: 4% auto;
 	background: url(forest.png) repeat;
 	animation: animate-background linear 12s infinite;
