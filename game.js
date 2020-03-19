@@ -1,9 +1,9 @@
 		
-		var canWidth =1000;
-		var canHeight = 500;
+		var canWidth =1300;
+		var canHeight = 600;
 		//position where frame will be drawn
 		var x = 0;
-		var y =200;
+		var y =270;
 		const scale =3;
 		
 		var trackLeft = 1;
