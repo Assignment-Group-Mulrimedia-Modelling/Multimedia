@@ -1,6 +1,6 @@
 		
-		var canWidth =700;
-		var canHeight = 400;
+		var canWidth =1000;
+		var canHeight = 500;
 		//position where frame will be drawn
 		var x = 0;
 		var y =150;
