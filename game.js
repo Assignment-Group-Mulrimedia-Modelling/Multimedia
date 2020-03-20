@@ -2,9 +2,9 @@
 		var canWidth =1300;
 		var canHeight = 600;
 		//position where frame will be drawn
-		var x = 0;
+		var x = 650;
 		var y =270;
-		const scale =3;
+		const scale =2;
 		
 		var trackLeft = 1;
 		var trackRight = 3;
@@ -34,13 +34,8 @@
 
 		var ctx = canvas.getContext('2d');
 		
-		function moveRight(){
-			left = false;
-		}
-		
-		function moveLeft(){
-			left = true;
-		}
+
+
 		function updateFrame(){
 			ctx.clearRect(x,y, width*scale, height*scale);
 			
@@ -53,21 +48,24 @@
 			if (left){
 			
 				
-				x-=5;
+				x-=4;
 				srcY = trackRight * height;
 			}
 			else{
 			
-				x+=5;
+				x+=4;
 				srcY = trackLeft * height;
 			}
+
+			if(x>700){
+				left = true;
+			}
+
+			if(x<550){
+				left = false;
+			}
 			currentFrame++;
-			
-			
-			
-			
-			
-			
+				
 			
 		}
 
@@ -80,4 +78,4 @@
 		setInterval(function(){
 			drawImage();
 
-		}, 50 );
+		}, 70 );
