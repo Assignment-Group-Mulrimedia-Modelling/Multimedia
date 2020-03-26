@@ -4,7 +4,7 @@
 	//position where DODO will be drawn
 		var a = 0;
 		var b = 270;
-		var scales = 2;
+		var scales = 1.5;
 		
 		var trackLefts = 1;
 		var trackRights = 3;
@@ -180,25 +180,6 @@
 			
 		}
 
-		/*var x1 = Math.floor((Math.random() * 1400) + 1300);
-		var x2 = Math.floor((Math.random() * 1400) + 1300);
-		var x3 = Math.floor((Math.random() * 1400) + 1300);
-		var x4 = Math.floor((Math.random() * 1400) + 1300);
-		console.log(x1);
-		console.log(x2);
-		console.log(x3);
-		console.log(x4);
-
-		console.log(" ");
-
-		var xx1 = Math.floor((Math.random() * 7) + 4);
-		var xx2 = Math.floor((Math.random() * 7) + 4);
-		var xx3 = Math.floor((Math.random() * 7) + 4);
-		var xx4 = Math.floor((Math.random() * 7) + 4);
-		console.log(xx1);
-		console.log(xx2);
-		console.log(xx3);
-		console.log(xx4);	*/
 
 		var currentFrame = 0;
 		var left = false;
@@ -235,17 +216,13 @@
 
 		
 
-			if (y_pos < 0) {
+			if (y_pos < 150) {
 				y_pos = canHeight;
 			}
 			else if (y_pos > canHeight) {
-				y_pos =0;
+				y_pos = 150;
 			}
-			/*ctx.clearRect(x,y, width*scale, height*scale);
-			ctx.clearRect(x1,y+50, width*(scale+0.1),height*(scale+0.1));
-			ctx.clearRect(x2,y+100, width*(scale+0.15),height*(scale+0.15));
-			ctx.clearRect(x3,y+200, width*(scale+0.2),height*(scale+0.2));
-			ctx.clearRect(x4,y+300, width*(scale+0.3),height*(scale+0.3));	*/			
+	
 			
 			currentFrames = currentFrames % col; //1 % 3 = 1 ... 3 % 3 = 0
 			currentFrame = currentFrame % cols;			
@@ -276,11 +253,8 @@
 			for (i=0;i<5;i++){
 				ennemies[i] -=speed[i];
 			}
-			/*x-=5;
-			x1-=xx1;
-			x2-=xx2;
-			x3-=xx3;
-			x4-=xx4;	*/		
+
+
 			srcY = trackRight * height;
 
 			
