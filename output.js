@@ -10,7 +10,7 @@
 		var trackRights = 3;
 		
 
-		var scrA;
+		var srcA;
 		var srcB;
 
 		var sheetWidths =144;
@@ -30,15 +30,15 @@
 		var blinking = false;
 		var startBlinking;
 		var endBlinking;
-		var blinkTime 
+		var blinkTime; 
 
-		var char = new Image;
+		var char = new Image();
 		char.src = "dodo1.png";
 		
-		var gun = new Image;
+		var gun = new Image();
 		gun.src = "gunattack.png";
 
-		var bullet = new Image;
+		var bullet = new Image();
 		bullet.src = "Bullet.png";
 
 	//position where HUNTERS will be drawn
@@ -203,7 +203,7 @@
 		var currentFrame = 0;
 		var left = false;
 
-		var character = new Image;
+		var character = new Image();
 		character.src = "hunter-left.png";	
 
 	//canvas	
