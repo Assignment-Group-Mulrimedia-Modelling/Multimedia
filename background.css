@@ -21,3 +21,8 @@ div#background{
 
 
 }
+
+input{
+	background-color: #008000;
+	text-decoration-color: white;
+}
