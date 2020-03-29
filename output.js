@@ -38,6 +38,8 @@
 		var dodos = new Array(6);
 		var dy = new Array(190,240,290,340,390,440);
 		var speedd = new Array(6);
+		var load = 0;
+		var loadStop = false;
 
 		for(var d = 0; d<=5; d++){
 			dodos[d]= Math.floor((Math.random() * 10) + 1);
@@ -212,7 +214,7 @@
 				yy[i] = Math.floor((Math.random() * 300)+ 180);
 				scaleIncrease[i] = Math.random() * 0.3;
 				scaleIncrease[i].toFixed(2); 
-				console.log(i);
+				//console.log(i);
 				i++;
 			}
 		}
@@ -337,7 +339,18 @@
 			else {
 
 
-				ctx.drawImage(gun,0,0,gun_w,gun_h,x_pos,y_pos,gun_w*scale_g, gun_h*scale_g);
+				if (load>100){
+					ctx.drawImage(gun,0,0,gun_w,gun_h,x_pos,y_pos,gun_w*scale_g, gun_h*scale_g);
+					loadStop = true;
+				}
+					
+					
+				if(!loadStop){
+					load++;
+				}
+
+				
+				
 				
 				if (space) {
 					ctx.drawImage(bullet,0,0,bullet_w,bullet_h,bullet_xpos,bullet_ypos,bullet_w*scale_g,bullet_h*scale_g);
@@ -350,9 +363,15 @@
 
 				}
 
-				ctx.drawImage(char,srcDx,srcDy,widths,heights,a,b,widths*scales,heights*scales); //dodo
 				
-				for ( var i=0;i<1000;i++){
+					ctx.drawImage(char,srcDx,srcDy,widths,heights,a,b,widths*scales,heights*scales); //dodo
+					
+
+				
+
+				
+				
+				for (var i=0;i<1000;i++){
 					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));
 					
 				}
@@ -370,3 +389,4 @@
 			drawImage();
 
 		}, 50 );
+
