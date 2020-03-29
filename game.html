@@ -3,7 +3,7 @@
 <head>
 	<title>Dodo Saver</title>
 	<link rel="stylesheet" type="text/css" href="background.css">
-
+	<link rel="stylesheet" type="text/css" href="sound1.css">
 </head>
 <body>
 	
@@ -13,8 +13,21 @@
 
 		<canvas id = 'canvas'></canvas>
 		
-		<input type="button" onclick="playsound()" value="Sound On" autoplay="autoplay"/>
-		<input type="button" onclick="stopsound()" value="Sound Off" autoplay="autoplay"/>
+		<div id = "sound">
+			<script src="sound.js"></script>
+
+			<button id="On">
+				<img id = "Son" src="soundOn.png" onclick="playsound()" alt="Sound On">
+			</button>
+
+			<button id="Off">
+				<img id = "Soff" src="soundOff.png" onclick="stopsound()" alt="Sound Off">
+			</button>
+
+		</div>	
+
+
+
 
 	</div>
 
