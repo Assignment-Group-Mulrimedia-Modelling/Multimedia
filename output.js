@@ -2,15 +2,17 @@
 		var canHeight = 600;
 
 	//position where DODO will be drawn
-		var a = 0;
+		var a = -800;
 		var b = 270;
 		var scales = 1.5;
 		
 		var trackLefts = 1;
 		var trackRights = 3;
 		
+		var srcDx;
+		var srcDy;
 
-		var scrA;
+		var srcA;
 		var srcB;
 
 		var sheetWidths =144;
@@ -30,21 +32,28 @@
 		var blinking = false;
 		
 
-		var char = new Image;
-		char.src = "dodo1.png";
+		var char = new Image();
+		char.src = "dodo3.png";
 		
-		var gun = new Image;
-		gun.src = "gunattack.png";
+		var dodos = new Array(6);
+		var dy = new Array(190,240,290,340,390,440);
+		var speedd = new Array(6);
 
-		var bullet = new Image;
-		bullet.src = "Bullet.png";
+		for(var d = 0; d<=5; d++){
+			dodos[d]= Math.floor((Math.random() * 10) + 1);
+			speedd[d]= Math.floor((Math.random() * 6) + 5);
+			console.log(speedd[d]);
+		}
 
-		var character = new Image;
-		character.src = "hunter-left.png";	
+
+
 
 	//position where HUNTERS will be drawn
-		var x = 1300; 
-		var y = 180;
+		var character = new Image();
+		character.src = "hunter-left.png";	
+
+		//var x = 1300; 
+		//var y = 180;
 		var scale = 0.7;
 		
 		var trackRight = 0;
@@ -61,8 +70,12 @@
 
 		var width = sheetWidth / cols;
 		var height = sheetHeight / rows;
+
+		var currentFrame = 0;
 		
-		//initialise gun
+	//initialise gun
+		var gun = new Image();
+		gun.src = "gunattack.png";
 		var gun_w = 488;
 		var gun_h = 415;
 		var x_pos = 150;
@@ -70,7 +83,9 @@
 		var scale_g = 0.25;
 		var speedGun =20;
 
-		//initialise bullet
+	//initialise bullet
+		var bullet = new Image();
+		bullet.src = "Bullet.png";
 		var bullet_w = 46;
 		var bullet_h = 46;
 		var bullet_xpos = 295;
@@ -96,7 +111,7 @@
 				
 
 		
-		//intitialise hunters
+	//intitialise hunters
 		var num =0;
 		var ennemies = new Array(1000);
 		var speed = new Array(1000);
@@ -172,8 +187,8 @@
 		}
 		
 
-		var currentFrame = 0;
-		var left = false;
+
+		//var left = false;
 
 		
 
@@ -192,8 +207,8 @@
 		function addEnemy(){
 			if (getRandom(50) == 0) { //when number generated == 0
 				
-				ennemies[i] = Math.floor((Math.random() * 1400) + 1300); // x-position of ennemies
-				speed[i] = Math.floor((Math.random() * 10) + 4); //speed of ennemies
+				ennemies[i] = Math.floor((Math.random() * 4010) + 4000); // x-position of ennemies
+				speed[i] = Math.floor((Math.random() * 7) + 5); //speed of ennemies
 				yy[i] = Math.floor((Math.random() * 300)+ 180);
 				scaleIncrease[i] = Math.random() * 0.3;
 				scaleIncrease[i].toFixed(2); 
@@ -213,26 +228,30 @@
 			
 			
 			ctx.clearRect(x_pos,y_pos,gun_w*scale_g,gun_h*scale_g); //gun
+
 			ctx.clearRect(bullet_xpos,bullet_ypos,bullet_w*scale_g,bullet_h*scale_g); //bullet	
+
 			ctx.clearRect(a,b, widths*scales, heights*scales); //DODO
+
+			for (d = 0; d<=5; d++){
+				ctx.clearRect(dodos[d],dy[d], widths*scales, heights*scales); //DODO
+			}	
+
 			for (var i=0;i<1000;i++){
 				ctx.clearRect(ennemies[i], yy[i], width*(scale+scaleIncrease[i]), height*(scale + scaleIncrease[i])); //hunters
 			}
+
 			handleControls();
 			updatePositions();
 			addEnemy();
 
 		
-			
-			
 
-		
-
-			if (y_pos < 0) {
-				y_pos = canHeight;
+			if (y_pos <= 180) {
+				y_pos = 550;
 			}
-			else if (y_pos > canHeight) {
-				y_pos =0;
+			else if (y_pos >= 550) {
+				y_pos = 180;
 			}
 						
 			
@@ -240,28 +259,37 @@
 			currentFrame = currentFrame % cols;			
 
 			srcA = currentFrames * widths;
-			
+			srcDx = currentFrames * widths;	
+
 			if (lefts){
 				
 				a-=3;
-				srcB = trackRights * heights;
+				srcDy = trackRights * heights;
 			}
 			else{
 			
 				a+=3;
-				srcB = trackLefts * heights;
+				srcDy = trackLefts * heights;
 			}
 
 			if(a>50){
-				lefts = true;
+				lefts = true;				
 			}
 
 			if(a<0){
 				lefts = false;
 			}
+
+			srcB = trackLefts * heights;	
+
 			currentFrames++;
+			
+			for(d=0;d<=5;d++){
+			dodos[d]+=speedd[d];
+			}
 
 			srcX = currentFrame * width;
+
 			for (i=0;i<1000;i++){
 				ennemies[i] -=speed[i];
 			}
@@ -298,12 +326,10 @@
 
 
 				for (var i=0;i<1000;i++){
-					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));
-					
+					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));	
 				}
-				
-				count++;
-				
+		
+				count++;		
 
 			}
 					
@@ -311,16 +337,23 @@
 			else {
 
 
+			setTimeout(function(){
+				blinking = false;
 				ctx.drawImage(gun,0,0,gun_w,gun_h,x_pos,y_pos,gun_w*scale_g, gun_h*scale_g);
 				
 				if (space) {
 					ctx.drawImage(bullet,0,0,bullet_w,bullet_h,bullet_xpos,bullet_ypos,bullet_w*scale_g,bullet_h*scale_g);
 				}
-					
+			}, 10000);		
 				
-				
 					
-				ctx.drawImage(char,srcA,srcB,widths,heights,a,b,widths*scales,heights*scales); //DODO
+			for (d=0; d<=5; d++){
+				ctx.drawImage(char,srcA,srcB,widths,heights,dodos[d],dy[d],widths*scales,heights*scales); //DODOS
+
+			}
+
+			ctx.drawImage(char,srcDx,srcDy,widths,heights,a,b,widths*scales,heights*scales); //dodo
+				
 				for ( var i=0;i<1000;i++){
 					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));
 					
@@ -338,4 +371,4 @@
 		setInterval(function(){
 			drawImage();
 
-		}, 60 );
+		}, 50 );
