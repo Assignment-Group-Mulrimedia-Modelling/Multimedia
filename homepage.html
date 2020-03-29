@@ -9,29 +9,41 @@
 
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link href="default.css" rel="stylesheet" type="text/css" media="all" />
-
-
+<link rel="stylesheet" type="text/css" href="sound.css">
 
 </head>
 <body>
-
-
+	
 	<div id="banner-wrapper">
-		<div id="banner" class="container">
-			<h2><strong>SAVE THE DODO</strong></h2>
-			
-			<a href="game.html" class="button">PLAY</a><br>
-			<a href="control.html" class="button">CONTROLS</a><br>
-			<a href="#" class="button">HISTORY</a>
-		</div>
-	</div>
-</div>
 
-		
-				
+
+		<div id="banner" class="container">
+
+			<h2><strong>SAVE THE DODO</strong></h2>
+
+		<div id = "sound">
+			<script src="sound.js"></script>
+
+			<button id="On">
+				<img id = "Son" src="sound_on.png" onclick="playsound()" alt="Sound On">
+			</button>
+
+			<button id="Off">
+				<img id = "Soff" src="sound_off.png" onclick="stopsound()" alt="Sound Off">
+			</button>
+
+		</div>	
+
+			<a href="game.html" class="buttons">PLAY</a><br>
+			<a href="Story.html" class="buttons">STORY</a><br>
+			<a href="#" class="buttons">SCORE</a>
+
+
 		</div>
 	</div>
-</div>
+
+
+
 <div id="copyright" class="container">
 	
 </div>
