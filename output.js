@@ -2,7 +2,7 @@
 		var canHeight = 600;
 
 	//position where DODO will be drawn
-		var a = -800;
+		var a = -600;
 		var b = 270;
 		var scales = 1.5;
 		
@@ -41,8 +41,8 @@
 
 		for(var d = 0; d<=5; d++){
 			dodos[d]= Math.floor((Math.random() * 10) + 1);
-			speedd[d]= Math.floor((Math.random() * 6) + 5);
-			console.log(speedd[d]);
+			speedd[d]= Math.floor((Math.random() * 6) + 8);
+			
 		}
 
 
@@ -207,7 +207,7 @@
 		function addEnemy(){
 			if (getRandom(50) == 0) { //when number generated == 0
 				
-				ennemies[i] = Math.floor((Math.random() * 4010) + 4000); // x-position of ennemies
+				ennemies[i] = Math.floor((Math.random() * 3500) + 2000); // x-position of ennemies
 				speed[i] = Math.floor((Math.random() * 7) + 5); //speed of ennemies
 				yy[i] = Math.floor((Math.random() * 300)+ 180);
 				scaleIncrease[i] = Math.random() * 0.3;
@@ -247,11 +247,11 @@
 
 		
 
-			if (y_pos <= 180) {
-				y_pos = 550;
+			if (y_pos <= 100) {
+				y_pos = 600;
 			}
-			else if (y_pos >= 550) {
-				y_pos = 180;
+			else if (y_pos > 600) {
+				y_pos = 101;
 			}
 						
 			
@@ -285,7 +285,7 @@
 			currentFrames++;
 			
 			for(d=0;d<=5;d++){
-			dodos[d]+=speedd[d];
+				dodos[d]+=speedd[d];
 			}
 
 			srcX = currentFrame * width;
@@ -337,22 +337,20 @@
 			else {
 
 
-			setTimeout(function(){
-				blinking = false;
 				ctx.drawImage(gun,0,0,gun_w,gun_h,x_pos,y_pos,gun_w*scale_g, gun_h*scale_g);
 				
 				if (space) {
 					ctx.drawImage(bullet,0,0,bullet_w,bullet_h,bullet_xpos,bullet_ypos,bullet_w*scale_g,bullet_h*scale_g);
 				}
-			}, 10000);		
+					
 				
 					
-			for (d=0; d<=5; d++){
-				ctx.drawImage(char,srcA,srcB,widths,heights,dodos[d],dy[d],widths*scales,heights*scales); //DODOS
+				for (d=0; d<=5; d++){
+					ctx.drawImage(char,srcA,srcB,widths,heights,dodos[d],dy[d],widths*scales,heights*scales); //DODOS
 
-			}
+				}
 
-			ctx.drawImage(char,srcDx,srcDy,widths,heights,a,b,widths*scales,heights*scales); //dodo
+				ctx.drawImage(char,srcDx,srcDy,widths,heights,a,b,widths*scales,heights*scales); //dodo
 				
 				for ( var i=0;i<1000;i++){
 					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));
