@@ -1,0 +1,28 @@
+button{
+	background: none;
+	border: none;
+	text-decoration: none;
+	display: block;
+	margin-bottom: 90;
+	width: 5%;
+	height: 5%;	
+	margin-left: 200%;
+
+}
+
+img{
+	width: 100%;
+	height: 100%;
+	border:none;
+}
+
+#Off{
+	margin-left: 80%;
+	border:none;
+}
+
+#On{
+	margin-left: 80%;
+	border:none;
+}
+
