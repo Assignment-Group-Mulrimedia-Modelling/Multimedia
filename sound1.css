@@ -9,20 +9,7 @@ button{
 
 }
 
-img{
-	width: 90%;
-	height: 90%;
-	border:none;
-	display: inline;
-}
 
-#Off{
-	border:none;
-}
-
-#On{
-	border:none;
-}
 
 #sound{
 	display: block;
