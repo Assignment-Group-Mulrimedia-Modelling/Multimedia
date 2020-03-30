@@ -27,3 +27,11 @@ img{
 #sound{
 	display: block;
 }
+
+.play, .pause {
+	width:100px;height:100px;
+	background: none;
+	width: 5%;
+	height: 5%;
+
+}
