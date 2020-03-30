@@ -16,13 +16,16 @@ img{
 	border:none;
 }
 
-#Off{
-	margin-left: 80%;
-	border:none;
+
+.play, .pause {
+	width:100px;height:100px;
+	background: none;
+	width: 6%;
+	height: 6%;
+
 }
 
-#On{
-	margin-left: 80%;
-	border:none;
+input{
+		margin-left: 85%;	
 }
 
