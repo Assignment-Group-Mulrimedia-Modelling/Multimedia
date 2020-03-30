@@ -1,4 +1,4 @@
-		var canWidth =1300;
+				var canWidth =1300;
 		var canHeight = 600;
 
 	//position where DODO will be drawn
@@ -30,6 +30,7 @@
 		
 		//dodo blinking variable
 		var blinking = false;
+		var blinkValue =0;
 		
 
 		var char = new Image();
@@ -225,6 +226,10 @@
 
 		}
 
+		function gameOver(){
+			location.replace("gameover.html");
+		}
+
 		
 		function updateFrame(){
 			
@@ -303,6 +308,8 @@
 				if (ennemies[i] < 250 && ennemies[i] >200) {
 					count =0;
 					blinking=true;
+				
+					//blinkValue ++;
 				}
 			}
 
@@ -314,6 +321,10 @@
 		
 		function drawImage(){
 			updateFrame();
+
+			if (blinkValue >=3) {
+				gameOver();
+			}
 			
 
 			
@@ -331,7 +342,11 @@
 					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));	
 				}
 		
-				count++;		
+				count++;
+				console.log(count);
+				if(count == 20) {
+					blinkValue++;
+				}		
 
 			}
 					
