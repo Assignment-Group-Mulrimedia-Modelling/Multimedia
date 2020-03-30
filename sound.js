@@ -11,3 +11,20 @@ function stopsound(){
 }	
 
 
+
+function toggle(el){
+    if(el.className=="pause")
+    {
+        el.src='sound_on.png';
+        el.className="play";
+        playsound();
+    }
+   else if(el.className!="pause")
+    {
+        el.src='sound_off.png';
+        el.className="pause";
+        stopsound();
+    }
+
+    return false;
+}  
