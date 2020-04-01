@@ -1,43 +1,38 @@
 body{ 
-	margin-right: 0px; 
-	background: black; 
+    margin-right: 0px; 
+    background: black; 
 }
 
 div#background{
-	width: 1300px;
-	height: 600px;
-	margin: 2.5% auto;
-	background: url(forest.png) repeat;
-	animation: animate-background linear 12s infinite;
+    width: 1300px;
+    height: 600px;
+    margin: 3% auto;
+    background: url(forest.png) repeat;
+    animation: animate-background linear 12s infinite;
 }
 
 @keyframes animate-background {
-	from { 
-		background-position: 0px 0px; 
-	} 
-	to { 
-		background-position:  0px 0px; 
-	}
+    from { 
+        background-position: 0px 0px; 
+    } 
+    to { 
+        background-position:  0px 0px; 
+    }
 
 
 }
-
-input{
-	background-color: #008000;
-	text-decoration-color: white;
-}
-
 
 
 .box
 {
     position: absolute;
-    top: 26%; 
-    left: 50%; 
+    top: 21%; /* position of the box, range of value[30% - 70%] */
+    left: 48%; /* position of the box, range of value[15% - 85%]  */
     transform: translate(-50%,-50%);
-    width: 350px; 
-    height: 350px; 
+    width: 40%; /* size of the box (The width and height must be the same) */
+    height: 28%; /* size of the box (The width and height must be the same) */
     background: #001e2d;
+    opacity: 70%;   
     box-sizing: border-box;
     overflow: hidden;
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
@@ -70,11 +65,12 @@ input{
     padding: 30px;
     text-align: center;
     box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+
 }
 .box .content h2 
 {
     color: red;
-    font-size: 20px;
+    font-size: 30px;
     text-shadow: 1.5px 1.5px white;
     margin: 0 0 10px;
     padding: 0;
@@ -83,120 +79,110 @@ input{
 
 
 
-.box .content span
+span
 {
-	color: white;
-}
-.box .content span:before
-{
-	content: '';
-	animation: animate infinite 8s;
-}
-@keyframes animate 
-{
-	0%
-	{
-		content: ' 1: Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a first-century BCE text by the Roman statesman and philosopher Cicero, with words altered, added, and removed to make it nonsensical, improper Latin. Lorem ipsum is typically a corrupted version of De finibus bonorum et malorum, a first-century BCE text by the Roman statesman and philosopher Cicero.';
-	}
-	50%
-	{
-		content: ' 2: Versions of the Lorem ipsum text have been used in typesetting at least since the 1960s, when it was popularized by advertisements for Letraset transfer sheets. Lorem ipsum was introduced to the digital world in the mid-1980s when Aldus employed it in graphic.';
-	}
-	100%
-	{
-		content: ' 3: Word-processing templates for its desktop publishing program PageMaker. Other popular word processors including Pages and Microsoft Word have since adopted Lorem ipsum as well.';
-	}
-	
+    color: #8acc44;
+    font-size: 25px;
 }
 
+span:before
+{
+    content: ''; 
+    animation: animate infinite 100s;
+}
 
-
-
-
-/*
-
-.box span 
-{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    box-sizing: border-box;
-}
-.box span:nth-child(1) 
-{
-    transform: rotate(0deg);
-}
-.box span:nth-child(2) 
-{
-    transform: rotate(90deg);
-}
-.box span:nth-child(3) 
-{
-    transform: rotate(180deg);
-}
-.box span:nth-child(4)
-{
-    transform: rotate(270deg);
-}
-.box span:nth-child(2):before 
-{
-    animation-delay: -2s;
-}
-.box span:nth-child(4):before 
-{
-    animation-delay: -2s;
-}
-.box span:before
-{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #0093ff;
-    animation: animate 4s linear infinite;
-}
 @keyframes animate 
 {
     0%
     {
-        transform: scaleX(0);
-        transform-origin: left;
+        font-family: poppins;
+        color: yellow; 
+        content: 'ON THIS SCREEN, YOU CAN CONTROL THE DODO USING THE ARROW KEYS. ';
+    }
+    10%
+    {
+      
+        color: aqua;
+        content: 'GAME STORY : ' ;
+        font-size: 30px;
+        font-weight: bolder;  
+
+    }
+    20%
+    {
+        font-size: 25px;
+        color: aqua;
+        content: ' 1. Our dodo is wandering around and has to join the other dodos walking ahead of him. ' ;
+    }
+    30%
+    {
+
+        color: aqua;
+        content: ' 2. However, the other dodos get killed by the Dutch Hunters and they come for the last one. Our shooter arrives on time to try & save IT from extincition.';
+        font-size: 25px !important ;
+        color: lightskyblue !important ;
     }
     50%
     {
-        transform: scaleX(1);
-        transform-origin: left;
+        color: lightskyblue !important;
+        font-weight: bolder; 
+        content: ' HISTORY of DODOs : ';
+        font-size: 25px;
+        color: lime;
+
     }
-    50.1%
+    55%
     {
-        transform: scaleX(1);
-        transform-origin: right;
+        font-family: poppins;
+        font-size: 20px;
+        content: 'The Dodos stood up to 1 metre tall and weighed in at approximately 20Kg and inhabited the Island of Mauritius. The bird was bulky, slow with short wings that prevented it from flying.' ;
+        font-size: 20px;
+        color: lime;        
+    }
+    70%
+    {
+        content: 'The dodo was entirely fearless of humans. This fearlessness and its inability to fly made the dodo easy prey for sailors. ';
+        font-weight: bold;
+        font-size: 25px;
+        color: lime; 
+    }  
+    80%
+    {
+        content: 'The Dodos had no experience of any types of predators before the  first arrival of the Dutch in 1598. They were passive creatures even when approached by human visitors for the first time. ';
+        font-weight: bold;
+        font-size: 20px;
+        color: lime;
+    }
+    90%
+    {
+        content: 'Its consumption became common and most appreciated by the Dutch living on the island. However, humans were not the only predators. Rats and monkeys escaped from ships and posed a threat to Dodo eggs and chicks. ';
+        font-weight: bold;
+        font-size: 20px;
+        color: lime; 
     }
     100%
     {
-        transform: scaleX(0);
-        transform-origin: right;
+        font-size: 20px; color: lime; 
+        content: 'And this is how the Dodos became EXTINCT. ';
+        font-weight: bolder;
+        color: red; 
     }
+
 }
-
-*/
-
-
-
 
 
 .center{
     position: absolute;
     top: 91.5%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,0%);
+
+
 }
 ul{
     padding: 0px;
     margin: 0px;
+    margin-top: 8%;
 }
 ul li{
     list-style: none;
@@ -207,22 +193,33 @@ ul li{
     border-radius: 15px;
     font-family: arial;
     padding: 5% 0% 0% 0%;
+    display: inline;
+    position: relative;
 }
 ul li a{
     text-decoration: none;
     padding: 15px 35px;
-    display: block;
+    display: inline;
     text-align: center;
     border-radius: 15px;
     transition: all 0.5s ease-in-out;
 }
 ul li:nth-child(1) a{
-    color: #00ff00;
+    color: red;
     border: 2px solid rgb(0,255,0,1);
 }
 ul li:nth-child(1):hover a{
-    box-shadow: 0px 0px 10px rgb(0,255,0,0.5), 0px 0px 10px rgb(0,252,0,1);
-    background-color: rgb(0,255,0,0.3);
+    box-shadow: 0px 0px 10px rgb(0,255,0,0.5), 0px 0px 10px rgb(0,0,252,1);
+    background-color: rgb(0,0,255,0.3);
+}
+
+ul li:nth-child(2) a{
+    color: red;
+    border: 2px solid rgb(0,255,0,1);
+}
+ul li:nth-child(2):hover a{
+    box-shadow: 0px 0px 10px rgb(0,0,255,0.5), 0px 0px 10px rgb(0,0,252,1);
+    background-color: rgb(0,0,255,0.3);
 }
 
 
