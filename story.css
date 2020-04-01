@@ -1,23 +1,23 @@
 body{ 
-    margin-right: 0px; 
-    background: black; 
+	margin-right: 0px; 
+	background: black; 
 }
 
 div#background{
-    width: 1300px;
-    height: 600px;
-    margin: 3% auto;
-    background: url(forest.png) repeat;
-    animation: animate-background linear 12s infinite;
+	width: 1300px;
+	height: 600px;
+	margin: 3% auto;
+	background: url(forest.png) repeat;
+	animation: animate-background linear 12s infinite;
 }
 
 @keyframes animate-background {
-    from { 
-        background-position: 0px 0px; 
-    } 
-    to { 
-        background-position:  0px 0px; 
-    }
+	from { 
+		background-position: 0px 0px; 
+	} 
+	to { 
+		background-position:  0px 0px; 
+	}
 
 
 }
@@ -81,40 +81,40 @@ div#background{
 
 span
 {
-    color: #8acc44;
+	color: #8acc44;
     font-size: 25px;
 }
 
 span:before
 {
-    content: ''; 
-    animation: animate infinite 100s;
+	content: ''; 
+	animation: animate infinite 100s;
 }
 
 @keyframes animate 
 {
-    0%
-    {
+	0%
+	{
         font-family: poppins;
         color: yellow; 
-        content: 'ON THIS SCREEN, YOU CAN CONTROL THE DODO USING THE ARROW KEYS. ';
-    }
-    10%
-    {
+		content: 'ON THIS SCREEN, YOU CAN CONTROL THE DODO USING THE ARROW KEYS. ';
+	}
+	10%
+	{
       
         color: aqua;
-        content: 'GAME STORY : ' ;
+		content: 'GAME STORY : ' ;
         font-size: 30px;
         font-weight: bolder;  
 
     }
-    20%
+	20%
     {
         font-size: 25px;
         color: aqua;
         content: ' 1. Our dodo is wandering around and has to join the other dodos walking ahead of him. ' ;
     }
-    30%
+	30%
     {
 
         color: aqua;
@@ -122,7 +122,7 @@ span:before
         font-size: 25px !important ;
         color: lightskyblue !important ;
     }
-    50%
+	50%
     {
         color: lightskyblue !important;
         font-weight: bolder; 
@@ -131,7 +131,7 @@ span:before
         color: lime;
 
     }
-    55%
+	55%
     {
         font-family: poppins;
         font-size: 20px;
