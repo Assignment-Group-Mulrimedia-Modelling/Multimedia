@@ -1,4 +1,4 @@
-				var canWidth =1300;
+		var canWidth =1300;
 		var canHeight = 600;
 
 	//position where DODO will be drawn
@@ -48,9 +48,6 @@
 			
 		}
 
-
-
-
 	//position where HUNTERS will be drawn
 		var character = new Image();
 		character.src = "hunter-left.png";	
@@ -91,13 +88,17 @@
 		bullet.src = "Bullet.png";
 		var bullet_w = 46;
 		var bullet_h = 46;
-		var bullet_xpos = 295;
+		var bullet_xpos = 100000;
 		var bullet_ypos = 383;
 		
 		var space = false;
 		
 		var z =0;
 		var count=0; //to count number of frames
+
+		var randNum=35;
+		var score =0;
+		var kill =false;
 
 
 		
@@ -106,35 +107,21 @@
 		var DOWN_KEY = 40;
 		var SPACEBAR = 32;
 
-		var startTime = new Date();
+		
 		var endTime;
 		var num=0;
-		console.log(startTime);
+		
 
 				
 
 		
 	//intitialise hunters
 		var num =0;
-		var ennemies = new Array(1000);
+		var ennemies = new Array(1000); //x-position of ennemies
 		var speed = new Array(1000);
 		var yy = new Array(1000); //y-position of  the hunters
-		var scaleIncrease = new Array(1000);
-		/*var z= Math.random() * 0.3;
-		z = z.toFixed(2);
-		console.log(z);*/
-
-		/*function createSprite(element, x, y, r, w, h ) {
-			var result = new Object();
-			result.element = element;
-			result.x = x;
-			result.y =y;
-			result.r = r;
-			result.w = w;
-			result.h = h;
-			return result;
-		}*/
-
+		//var scaleIncrease = new Array(1000); //size increase
+		
 		function toggleKey(keyCode, isPressed) {
 			if (keyCode == DOWN_KEY) {	
 				controller.down = isPressed;	
@@ -177,6 +164,7 @@
 			if (controller.space && bullet_xpos > 1300) {
 				bullet_xpos = x_pos + 145;
 				bullet_ypos = y_pos + 83;
+				console.log(bullet_xpos);
 	
 			}
 
@@ -184,7 +172,12 @@
 		}
 
 		function updatePositions(){
+			
+		
 			bullet_xpos+=80;
+			
+
+
 
 
 		}
@@ -208,16 +201,39 @@
 	//functions
 		var i=0;
 		function addEnemy(){
-			if (getRandom(50) == 0) { //when number generated == 0
+			if (getRandom(randNum) == 0) { //when number generated == 0
 				
-				ennemies[i] = Math.floor((Math.random() * 3500) + 2000); // x-position of ennemies
-				speed[i] = Math.floor((Math.random() * 7) + 5); //speed of ennemies
+				ennemies[i] = Math.floor((Math.random() * 3000) + 2000); // x-position of ennemies
+				speed[i] = Math.floor((Math.random() * 7) + 10); //speed of ennemies
 				yy[i] = Math.floor((Math.random() * 300)+ 180);
-				scaleIncrease[i] = Math.random() * 0.3;
-				scaleIncrease[i].toFixed(2); 
+				/*scaleIncrease[i] = Math.random() * 0.3;
+				scaleIncrease[i].toFixed(2);*/ 
 				//console.log(i);
 				i++;
 			}
+		}
+
+		function checkCollisions(){
+			for (var i=0;i<ennemies.length;i++){
+				if (bullet_xpos + bullet_w > ennemies[i] && bullet_xpos < ennemies[i] + width * scale && bullet_ypos + bullet_h > yy[i] && bullet_ypos < yy[i] + height * scale)
+				{
+					ennemies.splice(i,1);
+					i--;
+					bullet_xpos = 1000000;
+					score++;
+					kill =true;
+				}
+
+				while (score % 10 ==0 && randNum >=10 && kill ==true) {
+					randNum -=5;
+					console.log(randNum);
+					kill =false;
+					
+				}
+
+			}
+
+		
 		}
 		function getRandom(maxSize){
 			return parseInt(Math.random()*maxSize); //generate a number between 0 and maxSize
@@ -245,12 +261,16 @@
 			}	
 
 			for (var i=0;i<1000;i++){
-				ctx.clearRect(ennemies[i], yy[i], width*(scale+scaleIncrease[i]), height*(scale + scaleIncrease[i])); //hunters
+				ctx.clearRect(ennemies[i], yy[i], width * scale, height * scale); //hunters
 			}
 
-			handleControls();
 			updatePositions();
+			handleControls();
+			checkCollisions();
 			addEnemy();
+			
+			
+
 
 		
 
@@ -309,7 +329,7 @@
 					count =0;
 					blinking=true;
 				
-					//blinkValue ++;
+					
 				}
 			}
 
@@ -339,7 +359,7 @@
 
 
 				for (var i=0;i<1000;i++){
-					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));	
+					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width * scale, height * scale);	
 				}
 		
 				count++;
@@ -387,11 +407,13 @@
 				
 				
 				for (var i=0;i<1000;i++){
-					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width*(scale+scaleIncrease[i]),height*(scale+scaleIncrease[i]));
+					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width * scale, height * scale);
 					
 				}
 
 			}
+			var scoreElement = document.getElementById('score');
+			scoreElement.innerHTML = 'SCORE: ' + score;
 			
 
 		}
