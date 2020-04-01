@@ -1,23 +1,23 @@
 body{ 
-	margin-right: 0px; 
-	background: black; 
+    margin-right: 0px; 
+    background: black; 
 }
 
 div#background{
-	width: 1300px;
-	height: 600px;
-	margin: 3% auto;
-	background: url(forest.png) repeat;
-	animation: animate-background linear 12s infinite;
+    width: 1300px;
+    height: 600px;
+    margin: 3% auto;
+    background: url(forest.png) repeat;
+    animation: animate-background linear 12s infinite;
 }
 
 @keyframes animate-background {
-	from { 
-		background-position: 0px 0px; 
-	} 
-	to { 
-		background-position:  0px 0px; 
-	}
+    from { 
+        background-position: 0px 0px; 
+    } 
+    to { 
+        background-position:  0px 0px; 
+    }
 
 
 }
@@ -81,57 +81,57 @@ div#background{
 
 span
 {
-	color: #8acc44;
+    color: #8acc44;
     font-size: 25px;
 }
 
 span:before
 {
-	content: ''; 
-	animation: animate infinite 100s;
+    content: ''; 
+    animation: animate infinite 100s;
 }
 
 @keyframes animate 
 {
-	0%
-	{
+    0%
+    {
         font-family: poppins;
         color: yellow; 
-		content: 'ON THIS SCREEN, YOU CAN CONTROL THE DODO USING THE ARROW KEYS. ';
-	}
-	10%
-	{
+        content: 'ON THIS SCREEN, YOU CAN CONTROL THE DODO USING THE ARROW KEYS. ';
+    }
+    10%
+    {
       
         color: aqua;
-		content: 'GAME STORY : ' ;
+        content: 'GAME STORY : ' ;
         font-size: 30px;
         font-weight: bolder;  
 
     }
-	20%
+    20%
     {
         font-size: 25px;
         color: aqua;
         content: ' 1. Our dodo is wandering around and has to join the other dodos walking ahead of him. ' ;
     }
-	30%
+    30%
     {
 
         color: aqua;
         content: ' 2. However, the other dodos get killed by the Dutch Hunters and they come for the last one. Our shooter arrives on time to try & save IT from extincition.';
-        font-size: 25px !important ;
+        font-size: 18px !important ;
         color: lightskyblue !important ;
     }
-	50%
+    50%
     {
-        color: lightskyblue !important;
-        font-weight: bolder; 
+        color: lightskyblue !important; 
         content: ' HISTORY of DODOs : ';
         font-size: 25px;
+        font-weight: bolder;
         color: lime;
 
     }
-	55%
+    55%
     {
         font-family: poppins;
         font-size: 20px;
@@ -142,22 +142,19 @@ span:before
     70%
     {
         content: 'The dodo was entirely fearless of humans. This fearlessness and its inability to fly made the dodo easy prey for sailors. ';
-        font-weight: bold;
         font-size: 25px;
         color: lime; 
     }  
     80%
     {
         content: 'The Dodos had no experience of any types of predators before the  first arrival of the Dutch in 1598. They were passive creatures even when approached by human visitors for the first time. ';
-        font-weight: bold;
         font-size: 20px;
         color: lime;
     }
     90%
     {
         content: 'Its consumption became common and most appreciated by the Dutch living on the island. However, humans were not the only predators. Rats and monkeys escaped from ships and posed a threat to Dodo eggs and chicks. ';
-        font-weight: bold;
-        font-size: 20px;
+        font-size: 15px;
         color: lime; 
     }
     100%
