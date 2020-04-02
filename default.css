@@ -1,0 +1,114 @@
+html, body
+{
+
+
+	  background: url(dodo2.jpg) no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+
+}
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+	
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 11pt;
+	font-weight: 300;
+	color: #6c6c6c;
+}
+
+h2{
+	color: #000000;
+}
+h3{
+	margin: 0px;
+	font-size: 30px;
+	color: red;
+	font-family: arial;
+	font-weight: bold;
+	text-align: center;
+	padding: 0% 0% 0% 0%;
+}
+
+a:hover
+{
+	text-decoration: none;
+}
+
+.container
+{
+	margin: 0px auto;
+	width: 1200px;
+}
+/* Image Style */
+.image
+{
+	display: inline-block;
+}
+
+/* Button Style */
+.buttons
+{
+	display: inline-block;
+	padding: 1.3em 3em;
+	background: #F2762E;
+	border-radius: 30px;
+	-moz-transition: opacity 0.25s ease-in-out;
+	-webkit-transition: opacity 0.25s ease-in-out;
+	-o-transition: opacity 0.25s ease-in-out;
+	-ms-transition: opacity 0.25s ease-in-out;
+	transition: opacity 0.25s ease-in-out;
+	letter-spacing: 0.20em;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-weight: 600;
+	color: #FFF;
+	margin-bottom: 10;
+}
+
+.buttons:hover
+{
+	background: #E36922;
+}
+
+/* Banner */
+#banner
+{
+	overflow: hidden;
+	width: 1000px;
+	text-align: center;
+	color: rgba(255,255,255,.7);
+	font-size: 1.5em;
+}
+
+#banner h2
+{
+	padding-bottom: 0.50em;
+	font-weight: 400;
+	font-size: 3em;
+	color: #FFF;
+}
+
+#banner .buttons
+{
+	margin-top: 0.5em;
+	border-radius: 50px;
+}
+
+#banner strong
+{
+	color: #008000;
+}
+
+
+
+
+
+
+
+
+
