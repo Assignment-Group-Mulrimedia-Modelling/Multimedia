@@ -6,7 +6,7 @@ body{
 div#background{
     width: 1300px;
     height: 600px;
-    margin: 2% auto;
+    margin: 3% auto;
     background: url(forest.png) repeat;
     animation: animate-background linear 12s infinite;
 }
@@ -26,11 +26,11 @@ div#background{
 .box
 {
     position: absolute;
-    top: 19%;
-    left: 48%;
+    top: 21%; /* position of the box, range of value[30% - 70%] */
+    left: 48%; /* position of the box, range of value[15% - 85%]  */
     transform: translate(-50%,-50%);
-    width: 40%; 
-    height: 28%; 
+    width: 40%; /* size of the box (The width and height must be the same) */
+    height: 28%; /* size of the box (The width and height must be the same) */
     background: #001e2d;
     opacity: 70%;   
     box-sizing: border-box;
@@ -82,7 +82,7 @@ div#background{
 span
 {
     color: #8acc44;
-    font-size: 25px;
+    font-size: 100%;;
 }
 
 span:before
@@ -95,6 +95,7 @@ span:before
 {
     0%
     {
+        font-size: 150%;
         font-family: poppins;
         color: yellow; 
         content: 'ON THIS SCREEN, YOU CAN CONTROL THE DODO USING THE ARROW KEYS. ';
@@ -104,13 +105,13 @@ span:before
       
         color: aqua;
         content: 'GAME STORY : ' ;
-        font-size: 30px;
+        font-size: 200%;
         font-weight: bolder;  
 
     }
     20%
     {
-        font-size: 25px;
+        font-size: 130%;
         color: aqua;
         content: ' 1. Our dodo is wandering around and has to join the other dodos walking ahead of him. ' ;
     }
@@ -119,14 +120,14 @@ span:before
 
         color: aqua;
         content: ' 2. However, the other dodos get killed by the Dutch Hunters and they come for the last one. Our shooter arrives on time to try & save IT from extincition.';
-        font-size: 18px !important ;
+        font-size: 130%; !important ;
         color: lightskyblue !important ;
     }
     50%
     {
         color: lightskyblue !important; 
         content: ' HISTORY of DODOs : ';
-        font-size: 25px;
+        font-size: 150%;
         font-weight: bolder;
         color: lime;
 
@@ -134,32 +135,32 @@ span:before
     55%
     {
         font-family: poppins;
-        font-size: 20px;
+        font-size: 120%;
         content: 'The Dodos stood up to 1 metre tall and weighed in at approximately 20Kg and inhabited the Island of Mauritius. The bird was bulky, slow with short wings that prevented it from flying.' ;
-        font-size: 20px;
+        font-size: 120%;
         color: lime;        
     }
     70%
     {
         content: 'The dodo was entirely fearless of humans. This fearlessness and its inability to fly made the dodo easy prey for sailors. ';
-        font-size: 25px;
+        font-size: 140%;
         color: lime; 
     }  
     80%
     {
         content: 'The Dodos had no experience of any types of predators before the  first arrival of the Dutch in 1598. They were passive creatures even when approached by human visitors for the first time. ';
-        font-size: 20px;
+        font-size: 120%;
         color: lime;
     }
     90%
     {
         content: 'Its consumption became common and most appreciated by the Dutch living on the island. However, humans were not the only predators. Rats and monkeys escaped from ships and posed a threat to Dodo eggs and chicks. ';
-        font-size: 15px;
+        font-size: 110%;
         color: lime; 
     }
     100%
     {
-        font-size: 20px; color: lime; 
+        font-size: 130%; color: lime; 
         content: 'And this is how the Dodos became EXTINCT. ';
         font-weight: bolder;
         color: red; 
@@ -170,7 +171,7 @@ span:before
 
 .center{
     position: absolute;
-    top: 87%;
+    top: 91.5%;
     left: 50%;
     transform: translate(-50%,0%);
 
