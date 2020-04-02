@@ -9,8 +9,8 @@
 	<div class="bg">
 
 		<h2><strong>GAME OVER</strong></h2>
-		
-		<h1>SCORE:</h1>
+		<h3><strong>SCORE: <span id ='score'></span> </strong></h3>
+		<h3><strong>HIGHSCORE: <span id ='highscore'></span></strong></h3>
 
 		<div class="center">
 
@@ -22,6 +22,24 @@
 		</div>
 
 	</div>
+
+	<script type="text/javascript">
+		
+		function score(){
+			//let highscore = 15;
+			
+			let score = localStorage.getItem('score');
+			document.getElementById('score').innerHTML = score;
+
+			
+			let highscore = localStorage.getItem('highscore');
+			document.getElementById('highscore').innerHTML = highscore; 
+			
+
+
+		}
+		score();
+	</script>
 
 </body>
 </html>
