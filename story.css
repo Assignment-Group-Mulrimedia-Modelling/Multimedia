@@ -6,7 +6,7 @@ body{
 div#background{
     width: 1300px;
     height: 600px;
-    margin: 3% auto;
+    margin: 2.3% auto;
     background: url(forest.png) repeat;
     animation: animate-background linear 12s infinite;
 }
@@ -171,7 +171,7 @@ span:before
 
 .center{
     position: absolute;
-    top: 91.5%;
+    top: 88%;
     left: 50%;
     transform: translate(-50%,0%);
 
