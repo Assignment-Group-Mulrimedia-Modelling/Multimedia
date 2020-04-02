@@ -29,8 +29,8 @@ div#background{
     top: 21%; /* position of the box, range of value[30% - 70%] */
     left: 48%; /* position of the box, range of value[15% - 85%]  */
     transform: translate(-50%,-50%);
-    width: 40%; /* size of the box (The width and height must be the same) */
-    height: 28%; /* size of the box (The width and height must be the same) */
+    width: 40%;
+    height: 28%;
     background: #001e2d;
     opacity: 70%;   
     box-sizing: border-box;
