@@ -36,12 +36,27 @@
 
 
 		</div>
+
+		<h3><strong>HIGHSCORE: <span id ='highscore'></span></strong></h3>
 	</div>
 
 
 
 <div id="copyright" class="container">
+
+
 	
 </div>
+<script type="text/javascript">
+	function score(){
+
+		let highscore = localStorage.getItem('highscore');
+		document.getElementById('highscore').innerHTML = highscore; 
+			
+
+
+	}
+	score();	
+</script>
 </body>
 </html>
