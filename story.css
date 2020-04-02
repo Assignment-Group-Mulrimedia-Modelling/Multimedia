@@ -6,7 +6,7 @@ body{
 div#background{
     width: 1300px;
     height: 600px;
-    margin: 3% auto;
+    margin: 2% auto;
     background: url(forest.png) repeat;
     animation: animate-background linear 12s infinite;
 }
@@ -26,11 +26,11 @@ div#background{
 .box
 {
     position: absolute;
-    top: 21%; /* position of the box, range of value[30% - 70%] */
-    left: 48%; /* position of the box, range of value[15% - 85%]  */
+    top: 19%;
+    left: 48%;
     transform: translate(-50%,-50%);
-    width: 40%; /* size of the box (The width and height must be the same) */
-    height: 28%; /* size of the box (The width and height must be the same) */
+    width: 40%; 
+    height: 28%; 
     background: #001e2d;
     opacity: 70%;   
     box-sizing: border-box;
@@ -170,7 +170,7 @@ span:before
 
 .center{
     position: absolute;
-    top: 91.5%;
+    top: 87%;
     left: 50%;
     transform: translate(-50%,0%);
 
