@@ -33,6 +33,13 @@ h1{
 	left: 50%;
 	transform: translate(-50%,-50%);
 }
+
+#score {
+	color: #000000;
+}
+#highscore {
+	color: #000000;
+}
 ul{
 	padding: 0px;
 	margin: 0px;
