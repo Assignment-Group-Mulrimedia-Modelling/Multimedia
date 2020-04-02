@@ -465,7 +465,7 @@
 				count++;
 				console.log(count);
 				if (currentLives ==1) {
-					if (count ==0) {
+					if (count ==1) {
 						currentLives=0;
 					}
 				}
