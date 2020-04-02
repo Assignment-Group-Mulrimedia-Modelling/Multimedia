@@ -26,3 +26,31 @@ input{
 	background-color: #008000;
 	text-decoration-color: white;
 }
+
+#score {
+	position: absolute;
+	color:#000000;
+	font-size: 18pt;
+	top:80px;
+	right:12%;
+}
+
+#lives {
+	position: absolute;
+	color:#000000;
+	font-size: 18pt;
+	top:80px;
+	left:12%;
+}
+
+#highscore {
+	position: absolute;
+	color:#000000;
+	font-size: 18pt;
+	top:80px;
+	left:50%;
+        
+    
+	
+	
+}
