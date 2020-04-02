@@ -1,4 +1,4 @@
-		var canWidth =1300;
+				var canWidth =1300;
 		var canHeight = 600;
 
 	//position where DODO will be drawn
@@ -96,9 +96,23 @@
 		var z =0;
 		var count=0; //to count number of frames
 
-		var randNum=35;
-		var score =0;
-		var kill =false;
+		var randNum=35; //rate at which hunters are spawned
+		var score =0; //score of player
+		var saveKeyScore = "highscore" //save key for local storage of highscore
+		
+		var scoreHigh;
+		var kill =false; //registering a successul kill
+		var currentLives = 3 //current lives of dodo
+		
+		//Variables for Game Over text
+		var text;
+		var textSize = 100;//text font height in pixels
+		var TEXTSIZE =24; //text font height for highscore
+		var textFadeTime = 2.5; //text fade time in seconds
+		var textAlpha //dissapearing text
+		var dead = false;//when game is over, sttop shooting and moving
+		
+
 
 
 		
@@ -107,9 +121,8 @@
 		var DOWN_KEY = 40;
 		var SPACEBAR = 32;
 
+	
 		
-		var endTime;
-		var num=0;
 		
 
 				
@@ -117,12 +130,26 @@
 		
 	//intitialise hunters
 		var num =0;
-		var ennemies = new Array(1000); //x-position of ennemies
-		var speed = new Array(1000);
-		var yy = new Array(1000); //y-position of  the hunters
+		var ennemies = new Array(300); //x-position of ennemies
+		var speed = new Array(300);
+		var yy = new Array(300); //y-position of  the hunters
 		//var scaleIncrease = new Array(1000); //size increase
+
+		
+		var scoreStr = localStorage.getItem(saveKeyScore); //string value of score
+		
+		if (scoreStr == null) {
+			scoreHigh =0;	
+		}
+		else{
+			scoreHigh = parseInt(scoreStr); 
+		}
 		
 		function toggleKey(keyCode, isPressed) {
+
+			if(dead){
+				return; //stop any keypresses from working of gameover
+			}
 			if (keyCode == DOWN_KEY) {	
 				controller.down = isPressed;	
 			}
@@ -135,7 +162,7 @@
 				space = true;
 				controller.space = isPressed;
 			}
-			
+		
 		}
 
 		document.onkeydown = function(evt) {
@@ -153,6 +180,9 @@
 		
 
 		function handleControls(){
+			if(dead){
+				return; //stop any movements if gameover
+			}
 			if (controller.down) {
 				y_pos +=  speedGun;
 			}
@@ -164,7 +194,7 @@
 			if (controller.space && bullet_xpos > 1300) {
 				bullet_xpos = x_pos + 145;
 				bullet_ypos = y_pos + 83;
-				console.log(bullet_xpos);
+				
 	
 			}
 
@@ -181,10 +211,13 @@
 
 
 		}
+
+		
+		
 		
 
 
-		//var left = false;
+	
 
 		
 
@@ -201,10 +234,29 @@
 	//functions
 		var i=0;
 		function addEnemy(){
+			if(dead){
+				return;
+			}
 			if (getRandom(randNum) == 0) { //when number generated == 0
 				
 				ennemies[i] = Math.floor((Math.random() * 3000) + 2000); // x-position of ennemies
-				speed[i] = Math.floor((Math.random() * 7) + 10); //speed of ennemies
+				if (randNum == 35) {
+					speed[i] = Math.floor((Math.random() * 7) + 5); //speed of ennemies
+					//console.log(speed[i]);
+				}
+				else if (randNum ==30) {
+					speed[i] = Math.floor((Math.random() * 8) + 7); 
+				}
+				else if (randNum ==25) {
+					speed[i] = Math.floor((Math.random() * 6) + 12); 
+				}
+				else if (randNum ==20) {
+					speed[i] = Math.floor((Math.random() * 7) + 15); 
+				}
+				else if (randNum ==15) {
+					speed[i] = Math.floor((Math.random() * 9) + 18); 
+				}
+				
 				yy[i] = Math.floor((Math.random() * 300)+ 180);
 				/*scaleIncrease[i] = Math.random() * 0.3;
 				scaleIncrease[i].toFixed(2);*/ 
@@ -214,17 +266,23 @@
 		}
 
 		function checkCollisions(){
-			for (var i=0;i<ennemies.length;i++){
+			for (var i=ennemies.length;i>=0;i--){
 				if (bullet_xpos + bullet_w > ennemies[i] && bullet_xpos < ennemies[i] + width * scale && bullet_ypos + bullet_h > yy[i] && bullet_ypos < yy[i] + height * scale)
 				{
 					ennemies.splice(i,1);
-					i--;
 					bullet_xpos = 1000000;
 					score++;
 					kill =true;
+				
+				}
+				if(score > scoreHigh) {
+					scoreHigh =score;
+					localStorage.setItem(saveKeyScore,scoreHigh); 
 				}
 
-				while (score % 10 ==0 && randNum >=10 && kill ==true) {
+
+
+				while (score % 10 ==0 && randNum >=20 && kill ==true) {
 					randNum -=5;
 					console.log(randNum);
 					kill =false;
@@ -241,10 +299,34 @@
 
 
 		}
-
+	
+		var gameLoad =0;
 		function gameOver(){
-			location.replace("gameover.html");
+			
+			dead =true;
+			localStorage.setItem('score',score);
+			localStorage.setItem('highscore',scoreHigh);
+			text = "Game Over";	
+			textAlpha =1.0;
+		
+			
+			if( gameLoad>80){
+				location.replace("gameover.html");	
+			}
+
+			gameLoad++;
+			
+			
+
+			
+			
+			
+
 		}
+
+		
+
+
 
 		
 		function updateFrame(){
@@ -260,11 +342,12 @@
 				ctx.clearRect(dodos[d],dy[d], widths*scales, heights*scales); //DODO
 			}	
 
-			for (var i=0;i<1000;i++){
+			for (var i=0;i<300;i++){
 				ctx.clearRect(ennemies[i], yy[i], width * scale, height * scale); //hunters
 			}
 
 			updatePositions();
+
 			handleControls();
 			checkCollisions();
 			addEnemy();
@@ -317,7 +400,7 @@
 
 			srcX = currentFrame * width;
 
-			for (i=0;i<1000;i++){
+			for (i=0;i<300;i++){
 				ennemies[i] -=speed[i];
 			}
 				
@@ -334,15 +417,32 @@
 			}
 
 			currentFrame++;
+
+			
+			
+		
+
+
+			//draw gameOver	
+			 if (textAlpha >= 0) {
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillStyle = "rgba(255, 0, 0, " + textAlpha + ")";
+                ctx.font = "small-caps " + textSize + "px dejavu sans mono";
+                ctx.fillText(text, canWidth / 2, canHeight/2);
+                textAlpha -= (0.1);
+            }
+
 				
 			
 		}
 
 		
 		function drawImage(){
+
 			updateFrame();
 
-			if (blinkValue >=3) {
+			if (currentLives ==0) {
 				gameOver();
 			}
 			
@@ -358,14 +458,25 @@
 
 
 
-				for (var i=0;i<1000;i++){
+				for (var i=0;i<300;i++){
 					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width * scale, height * scale);	
 				}
 		
 				count++;
 				console.log(count);
+				if (currentLives ==1) {
+					if (count ==0) {
+						currentLives=0;
+					}
+				}
 				if(count == 20) {
-					blinkValue++;
+					currentLives--;
+					if (currentLives <=0){
+						currentLives =0;
+					}
+					
+					
+					
 				}		
 
 			}
@@ -399,14 +510,14 @@
 				}
 
 				
-					ctx.drawImage(char,srcDx,srcDy,widths,heights,a,b,widths*scales,heights*scales); //dodo
+				ctx.drawImage(char,srcDx,srcDy,widths,heights,a,b,widths*scales,heights*scales); //dodo
 					
 
 				
 
 				
 				
-				for (var i=0;i<1000;i++){
+				for (var i=0;i<300;i++){
 					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width * scale, height * scale);
 					
 				}
@@ -414,6 +525,12 @@
 			}
 			var scoreElement = document.getElementById('score');
 			scoreElement.innerHTML = 'SCORE: ' + score;
+
+			var livesElement = document.getElementById('lives');
+			livesElement.innerHTML = 'CURRENT LIVES: ' + currentLives;
+
+			var highElement = document.getElementById('highscore');
+			highElement.innerHTML = "BEST: " + scoreHigh;
 			
 
 		}
