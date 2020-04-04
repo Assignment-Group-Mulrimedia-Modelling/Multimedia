@@ -7,7 +7,7 @@ div#background{
     width: 1300px;
     height: 600px;
     margin: 2.3% auto;
-    background: url(forest.png) repeat;
+    background: url(lionmountain6.png) repeat;
     animation: animate-background linear 12s infinite;
 }
 
