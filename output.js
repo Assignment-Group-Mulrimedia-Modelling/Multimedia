@@ -173,11 +173,13 @@
 			toggleKey(evt.keyCode,false);
 		};
 
-		//var bullet = createSprite('bullet',30,40,6, 12,12);
+			//var bullet = createSprite('bullet',30,40,6, 12,12);
 
 
-		
-		
+		var pauses = false;
+		function paused(){
+			pauses = !pauses;			
+		}	
 
 		function handleControls(){
 			if(dead){
@@ -331,7 +333,10 @@
 		
 		function updateFrame(){
 			
-			
+			if(pauses){
+				return;
+			}			
+						
 			ctx.clearRect(x_pos,y_pos,gun_w*scale_g,gun_h*scale_g); //gun
 
 			ctx.clearRect(bullet_xpos,bullet_ypos,bullet_w*scale_g,bullet_h*scale_g); //bullet	
