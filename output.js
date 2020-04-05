@@ -254,9 +254,9 @@
 	//functions
 		var i=0;
 		function addEnemy(){
-			/*if(dead){
+			if(dead){
 				return;
-			}*/
+			}
 			if (getRandom(randNum) == 0) { //when number generated == 0
 				
 				ennemies[i] = Math.floor((Math.random() * 3000) + 2000); // x-position of ennemies
@@ -327,56 +327,28 @@
 			dead =true;
 			clearInterval(50);
 
-			console.log(gameLoad);
+			
 			if (gameLoad > 50){
 				drawDodo();	
 			}
-			
-
-			/*var newEnnemies = Math.floor((Math.random() * 3000) + 2000);
-			var speed = Math.floor((Math.random() * 7) + 5);
-			var yy = Math.floor((Math.random() * 300)+ 180);
-			var cFrame =0;
-			var newSource;
-
-			//srcY = trackRight * height;
-			
-
-			function update(){
-				ctx.clearRect(newEnnemies,yy,width * scale, height * scale);
-
-				cFrame = cFrame % cols;	
-				newSource = cFrame * width;
-				cFrame++;
-				newEnnemies -=speed;
-
-			}
-			function drawHunter(){
-				update();
-				ctx.drawImage(character,newSource,0,width,height,newEnnemies,yy,width * scale, height * scale);
-
-				
-			}
-			
-
-			setInterval(function(){
-			drawHunter();
-
-			}, 50 );*/
-
-					
 			
 			localStorage.setItem('score',score);
 			localStorage.setItem('highscore',scoreHigh);
 			text = "Game Over";	
 			textAlpha =1.0;
+
+			
+		
+
+			
 		
 			
-			if( gameLoad>100){
+			if( gameLoad > 80){
 				location.replace("gameover.html");	
 			}
 
 			gameLoad++;
+			console.log(gameLoad);
 			
 			
 
@@ -559,7 +531,7 @@
 				}
 		
 				count++;
-				console.log(count);
+				//console.log(count);
 				if (currentLives ==1) {
 					if (count ==1) {
 						currentLives=0;
