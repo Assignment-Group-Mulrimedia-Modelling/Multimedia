@@ -54,7 +54,7 @@
 
 		//var x = 1300; 
 		//var y = 180;
-		var scale = 0.7;
+		var scale = 0.8;
 		
 		var trackRight = 0;
 		
