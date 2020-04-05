@@ -1,4 +1,4 @@
-				var canWidth =1300;
+		var canWidth =1300;
 		var canHeight = 600;
 
 	//position where DODO will be drawn
