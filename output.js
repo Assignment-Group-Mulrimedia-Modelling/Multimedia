@@ -124,6 +124,24 @@
 	
 		
 		
+	//dodo fall variables
+		var dodoX =55;
+		var dodoY =280;	
+
+		var srcDodoX;
+		var srcDodoY = 0;
+
+		var widthDodo = 48;
+		var heightDodo = 64;
+		var scaleDodo =1.5;
+		var exit = false;
+
+		var dodoChar = new Image();
+		dodoChar.src = "dodo-fall.png";
+
+		var cDodo = 0;
+
+
 
 				
 
@@ -236,9 +254,9 @@
 	//functions
 		var i=0;
 		function addEnemy(){
-			if(dead){
+			/*if(dead){
 				return;
-			}
+			}*/
 			if (getRandom(randNum) == 0) { //when number generated == 0
 				
 				ennemies[i] = Math.floor((Math.random() * 3000) + 2000); // x-position of ennemies
@@ -304,15 +322,57 @@
 	
 		var gameLoad =0;
 		function gameOver(){
-			
+
+			ennemies.splice(1,299);
 			dead =true;
+			clearInterval(50);
+
+			console.log(gameLoad);
+			if (gameLoad > 50){
+				drawDodo();	
+			}
+			
+
+			/*var newEnnemies = Math.floor((Math.random() * 3000) + 2000);
+			var speed = Math.floor((Math.random() * 7) + 5);
+			var yy = Math.floor((Math.random() * 300)+ 180);
+			var cFrame =0;
+			var newSource;
+
+			//srcY = trackRight * height;
+			
+
+			function update(){
+				ctx.clearRect(newEnnemies,yy,width * scale, height * scale);
+
+				cFrame = cFrame % cols;	
+				newSource = cFrame * width;
+				cFrame++;
+				newEnnemies -=speed;
+
+			}
+			function drawHunter(){
+				update();
+				ctx.drawImage(character,newSource,0,width,height,newEnnemies,yy,width * scale, height * scale);
+
+				
+			}
+			
+
+			setInterval(function(){
+			drawHunter();
+
+			}, 50 );*/
+
+					
+			
 			localStorage.setItem('score',score);
 			localStorage.setItem('highscore',scoreHigh);
 			text = "Game Over";	
 			textAlpha =1.0;
 		
 			
-			if( gameLoad>80){
+			if( gameLoad>100){
 				location.replace("gameover.html");	
 			}
 
@@ -335,7 +395,9 @@
 			
 			if(pauses){
 				return;
-			}			
+			}
+
+						
 						
 			ctx.clearRect(x_pos,y_pos,gun_w*scale_g,gun_h*scale_g); //gun
 
@@ -381,10 +443,16 @@
 				a-=3;
 				srcDy = trackRights * heights;
 			}
+
+			
 			else{
 			
 				a+=3;
 				srcDy = trackLefts * heights;
+			}
+
+			if (dead) {
+				a =-400;
 			}
 
 			if(a>50){
@@ -441,17 +509,40 @@
 				
 			
 		}
+		
+		function update(){
+			
+			if (exit == false) {
+				ctx.clearRect(dodoX, dodoY, widthDodo * scaleDodo, heightDodo * scaleDodo);
+
+				cFrame = currentFrame % 6;
+				srcDodoX = cFrame * widthDodo;
+				dodoX-=5;
+
+				if (cFrame == 5){
+					exit = true;
+				}
+
+				cFrame++;
+			}
+		
+
+
+			
+				
+		}
 
 		
 		function drawImage(){
 
+
 			updateFrame();
 
-			if (currentLives ==0) {
+			if (currentLives == 0) {
 				gameOver();
 			}
 			
-
+			
 			
 			if (blinking && Math.floor(Date.now()/frequency) % 2  && count < 20 ) {
 				
@@ -474,7 +565,7 @@
 						currentLives=0;
 					}
 				}
-				if(count == 20) {
+				if(count == 15) {
 					currentLives--;
 					if (currentLives <=0){
 						currentLives =0;
@@ -523,11 +614,13 @@
 				
 				
 				for (var i=0;i<300;i++){
-					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width * scale, height * scale);
+					ctx.drawImage(character,srcX,srcY,width,height,ennemies[i],yy[i],width * scale, height * scale); //hunters
 					
 				}
 
 			}
+
+		
 			var scoreElement = document.getElementById('score');
 			scoreElement.innerHTML = 'SCORE: ' + score;
 
@@ -539,6 +632,22 @@
 			
 
 		}
+		function drawDodo(){
+			if (dead ==true){
+				update();
+				ctx.drawImage(dodoChar, srcDodoX, srcDodoY, widthDodo, heightDodo, dodoX, dodoY, widthDodo* scaleDodo, heightDodo * scaleDodo);	
+			}
+
+
+		}
+
+	
+
+		setInterval(function(){
+			drawDodo();
+		
+
+		}, 300);
 			
 			
 			
