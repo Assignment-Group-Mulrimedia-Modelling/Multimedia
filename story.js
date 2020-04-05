@@ -1,4 +1,4 @@
-var SCALEd = 1.5;
+var SCALEd = 2.5;
 var WIDTHs = 48;
 var HEIGHTs = 64;
 var SCALED_WIDTH = SCALEd * WIDTHs;
