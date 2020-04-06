@@ -396,11 +396,11 @@
 
 		
 
-			if (y_pos <= 100) {
+			if (y_pos <= 160) {
 				y_pos = 600;
 			}
 			else if (y_pos > 600) {
-				y_pos = 101;
+				y_pos = 161;
 			}
 						
 			
